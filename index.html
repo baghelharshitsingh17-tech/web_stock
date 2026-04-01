@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Stockify - Stock Market Viewer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="page-bg"></div>
+
+  <header class="navbar">
+    <div class="logo">Stockify</div>
+    <nav class="nav-links">
+      <a href="#">Home</a>
+      <a href="#market">Market</a>
+      <a href="#watchlist">Watchlist</a>
+      <a href="#about">About</a>
+    </nav>
+    <button class="nav-btn">Get Started</button>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-left">
+        <p class="tag">SMART STOCK ANALYSIS</p>
+        <h1>Track the market with a modern trading dashboard</h1>
+        <p class="hero-text">
+          Search, filter, and sort live stock data with a premium stock market UI.
+          Clean design, fast loading, and real-time intraday updates.
+        </p>
+
+        <div class="hero-actions">
+          <button id="loadBtn" class="primary-btn">Load Stocks</button>
+          <button class="secondary-btn">Explore Market</button>
+        </div>
+
+        <div class="stats-row">
+          <div class="stat-card">
+            <h3 id="stockCount">0</h3>
+            <p>Stocks Loaded</p>
+          </div>
+          <div class="stat-card">
+            <h3 id="upCount">0</h3>
+            <p>Positive Stocks</p>
+          </div>
+          <div class="stat-card">
+            <h3 id="downCount">0</h3>
+            <p>Negative Stocks</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-right">
+        <div class="chart-card">
+          <div class="chart-header">
+            <div>
+              <p class="mini-label">Market Overview</p>
+              <h3>NASDAQ Signal</h3>
+            </div>
+            <span class="live-pill">LIVE</span>
+          </div>
+
+          <div class="fake-chart">
+            <div class="glow glow-1"></div>
+            <div class="glow glow-2"></div>
+            <svg viewBox="0 0 500 220" class="chart-svg" preserveAspectRatio="none">
+              <defs>
+                <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stop-color="#7c3aed"></stop>
+                  <stop offset="100%" stop-color="#06b6d4"></stop>
+                </linearGradient>
+                <linearGradient id="fillGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="0%" stop-color="rgba(59,130,246,0.45)"></stop>
+                  <stop offset="100%" stop-color="rgba(59,130,246,0.02)"></stop>
+                </linearGradient>
+              </defs>
+
+              <path
+                d="M0,180 C40,170 70,145 100,150 C140,158 165,120 205,128 C245,136 275,92 315,100 C355,108 385,60 425,70 C455,78 480,48 500,42 L500,220 L0,220 Z"
+                fill="url(#fillGradient)"
+              ></path>
+
+              <path
+                d="M0,180 C40,170 70,145 100,150 C140,158 165,120 205,128 C245,136 275,92 315,100 C355,108 385,60 425,70 C455,78 480,48 500,42"
+                fill="none"
+                stroke="url(#lineGradient)"
+                stroke-width="6"
+                stroke-linecap="round"
+              ></path>
+            </svg>
+          </div>
+
+          <div class="chart-footer">
+            <div>
+              <p class="mini-label">Daily Trend</p>
+              <h4>+2.48%</h4>
+            </div>
+            <div>
+              <p class="mini-label">Volume</p>
+              <h4>1.24M</h4>
+            </div>
+            <div>
+              <p class="mini-label">Sentiment</p>
+              <h4>Bullish</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="controls-section" id="market">
+      <div class="section-head">
+        <div>
+          <p class="tag small-tag">MARKET SCREENER</p>
+          <h2>Find and manage stocks</h2>
+        </div>
+        <p id="status" class="status">Click "Load Stocks" to fetch data</p>
+      </div>
+
+      <div class="controls">
+        <input
+          type="text"
+          id="searchInput"
+          placeholder="Search by symbol (e.g. IBM, AAPL)"
+        />
+
+        <label for="filterSelect">Filter:</label>
+        <select id="filterSelect">
+          <option value="all">All Stocks</option>
+          <option value="up">Price Up</option>
+          <option value="down">Price Down</option>
+        </select>
+
+        <label for="sortSelect">Sort:</label>
+        <select id="sortSelect">
+          <option value="default">Sort By</option>
+          <option value="priceHigh">Price: High to Low</option>
+          <option value="priceLow">Price: Low to High</option>
+          <option value="changeHigh">Change %: High to Low</option>
+          <option value="changeLow">Change %: Low to High</option>
+        </select>
+      </div>
+    </section>
+
+    <section class="stock-grid-section" id="watchlist">
+      <div id="stockContainer" class="stock-container"></div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
